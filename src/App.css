@@ -1,13 +1,33 @@
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 6rem;
+  background-color: white;
+}
+.header-div {
+  background-color: aqua;
+}
+
+h1 {
+  font-size: 3rem;
+  color: red;
+}
+
 .App {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: black;
 }
 
 .fiche {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  background-color: azure;
+  align-items: center;
+  background-color: grey;
   width: 30rem;
   height: 30rem;
 }
@@ -19,8 +39,9 @@
   height: 15rem;
 }
 .charactername {
-  background-color: blueviolet;
+  font-size: 22px;
+  font-weight: bold;
 }
-.characterdescription {
-  background-color: brown;
+.characterdescription:hover {
+  text-decoration: underline;
 }

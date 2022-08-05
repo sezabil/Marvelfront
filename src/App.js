@@ -1,6 +1,11 @@
 import "./App.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import Comics from "./Comics";
+import Home from "./Home";
+import Header from "./header";
+import Comic from "./Comic";
 
 function App() {
   const [data, setData] = useState(null);
@@ -19,36 +24,14 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <h1>Marvel</h1>
-
-      {isLoading === true ? (
-        <h2>En cours de chargement</h2>
-      ) : (
-        <>
-          {data.charactData.results.map((character) => {
-            return (
-              <div className="fiche">
-                <p className="charactername" key={character._id}>
-                  {character.name}
-                </p>
-
-                <p className="characterdescription">{character.description}</p>
-                <img
-                  className="picturecharacter"
-                  src={
-                    character.thumbnail.path +
-                    "." +
-                    character.thumbnail.extension
-                  }
-                  alt="Picturecharacter"
-                />
-              </div>
-            );
-          })}
-        </>
-      )}
-    </div>
+    <Router>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/comics" element={<Comics />} />
+        <Route path="/comic" element={<Comic />} />
+      </Routes>
+    </Router>
   );
 }
 
