@@ -1,35 +1,25 @@
 import "./App.css";
-import { useState, useEffect } from "react";
+
+//import axios
 import axios from "axios";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import Comics from "./Comics";
-import Home from "./Home";
-import Header from "./header";
-import Comic from "./Comic";
+
+//import de mes pages:
+import Comics from "./pages/Comics";
+import Home from "./pages/Home";
+import Header from "./components/header";
+import Characters from "./pages/Characters";
+import Character from "./pages/Character";
 
 function App() {
-  const [data, setData] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchMyMarvelBackend = async () => {
-      const response = await axios.get(
-        "https://marvel-seza.herokuapp.com/characters"
-      );
-      setData(response.data);
-      setIsLoading(false);
-    };
-
-    fetchMyMarvelBackend();
-  }, []);
-
   return (
     <Router>
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/characters" element={<Characters />} />
         <Route path="/comics" element={<Comics />} />
-        <Route path="/comic" element={<Comic />} />
+        <Route path="/comics/:characterId" element={<Character />} />
       </Routes>
     </Router>
   );
